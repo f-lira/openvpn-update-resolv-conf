@@ -60,7 +60,10 @@ up)
   echo -n "$R" | $RESOLVCONF -x -a "${dev}.inet"
   ;;
 down)
-  $RESOLVCONF -d "${dev}.inet"
+  # You should run the openvpn as nobody user.
+  # Therefore this statement will not work as nobody user.
+  # see the 1000-update-resolv-conf-drop-tun0.sh
+  #$RESOLVCONF -d "${dev}.inet"
   ;;
 esac
 
